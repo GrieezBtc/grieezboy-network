@@ -12,24 +12,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        :root {
-            --primary: #2c3e50;
-            --accent: #e67e22;
-            --light: #f4f4f4;
-            --dark: #333;
-            --white: #ffffff;
-        }
+        header {#greeting::after {
+    content: "|";
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+}
 
-        * { box-sizing: border-box; }
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+               }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            background-color: var(--light);
-            color: var(--dark);
-            scroll-behavior: smooth; /* Makes clicking links scroll smoothly */
-        }
+/* This is the logic that moves the background */
+@keyframes flowGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+        
+
+        body {<body>
+    <nav>...</nav>
+
+    <header>
+        <h1 id="greeting"></h1> 
+        <p>Innovation lives here at Grieezboynetwork.</p>
+    </header>
+
+    ...
+</body>
+              }
 
         /* NAVIGATION */
         nav {
@@ -215,12 +235,30 @@
 
     <script>
         // --- Greeting Logic ---
-        const greeting = document.getElementById('greeting');
-        const hour = new Date().getHours();
-        if (hour < 12) greeting.textContent = "Good Morning from Grieezboynetwork!";
-        else if (hour < 18) greeting.textContent = "Good Afternoon from Grieezboynetwork!";
-        else greeting.textContent = "Good Evening from Grieezboynetwork!";
+        const greetingElement = document.getElementById('greeting');
+const hour = new Date().getHours();
+let fullText = "";
 
+// 1. Determine the message
+if (hour < 12) fullText = "Good Morning from Grieezboynetwork!";
+else if (hour < 18) fullText = "Good Afternoon from Grieezboynetwork!";
+else fullText = "Good Evening from Grieezboynetwork!";
+
+let index = 0;
+
+function typeWriter() {
+    if (index < fullText.length) {
+        // Add the next character
+        greetingElement.textContent += fullText.charAt(index);
+        index++;
+        // Wait 100ms before typing the next letter
+        setTimeout(typeWriter, 100);
+    }
+}
+
+// 2. Start the effect when the page loads
+window.onload = typeWriter;
+        
         // --- Back to Top Logic ---
         const topBtn = document.getElementById("backToTop");
         window.onscroll = function() {
@@ -246,6 +284,14 @@
             form.reset();
         });
     </script>
+        // PASTE YOUR TYPEWRITER JAVASCRIPT LOGIC HERE
+        function typeWriter() {
+            /* ... typing code ... */
+        }
+        window.onload = typeWriter;
+    </script>
+</body>
+</html>
 
 </body>
 </html>
