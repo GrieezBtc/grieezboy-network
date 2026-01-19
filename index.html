@@ -345,67 +345,52 @@
     </script>
 </body>
 </html>
-      <section id="info" class="info-section">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-label">Tech Insights</p>
-                    <h2 class="section-title">Your Device Information</h2>                <p class="section-subtitle">See how our solutions adapt to your device</p>
-                </div>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Date & Time</h3>
-                            <p id="datetime">Loading...</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Network Status</h3>
-                            <p id="network-status">Loading...</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-mobile"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Device</h3>
-                            <p id="device-name">Loading...</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Screen Resolution</h3>
-                            <p id="screen-resolution">Loading...</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-battery-three-quarters"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Battery Status</h3>
-                            <p id="battery-status">Loading...</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>IP Address</h3>
-                            <p id="ip">Loading...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<script>
+    async function updateDeviceInfo() {
+        // 1. Date and Time
+        const now = new Date();
+        document.getElementById('datetime').textContent = now.toLocaleString();
+
+        // 2. Network Status
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        const type = connection ? connection.effectiveType : (navigator.onLine ? "Online" : "Offline");
+        document.getElementById('network-status').textContent = type.toUpperCase();
+
+        // 3. Device / User Agent
+        const platform = navigator.platform;
+        document.getElementById('device-name').textContent = platform;
+
+        // 4. Screen Resolution
+        const width = window.screen.width;
+        const height = window.screen.height;
+        document.getElementById('screen-resolution').textContent = `${width} x ${height}`;
+
+        // 5. Battery Status
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(battery => {
+                const level = Math.floor(battery.level * 100) + "%";
+                const charging = battery.charging ? " (Charging)" : "";
+                document.getElementById('battery-status').textContent = level + charging;
+            });
+        } else {
+            document.getElementById('battery-status').textContent = "Not Supported";
+        }
+
+        // 6. IP Address (Requires an external API)
+        try {
+            const response = await fetch('https://api.ipify.org?format=json');
+            const data = await response.json();
+            document.getElementById('ip').textContent = data.ip;
+        } catch (error) {
+            document.getElementById('ip').textContent = "Unavailable";
+        }
+    }
+
+    // Run on load
+    updateDeviceInfo();
+    // Update time every second
+    setInterval(() => {
+        const now = new Date();
+        document.getElementById('datetime').textContent = now.toLocaleString();
+    }, 1000);
+</script>
