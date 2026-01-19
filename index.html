@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grieezboynetwork | Personal Blog</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .blog-post {
+            background: #fff;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-post h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #d35400;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        /* JavaScript interactivity class */
+        .liked {
+            background-color: #27ae60 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Grieezboynetwork</h1>
+        <p>Sharing my journey in Web Development</p>
+    </header>
+
+    <div class="container">
+        <article class="blog-post">
+            <h2>Welcome to My First Post</h2>
+            <p>Today I started my journey with HTML, CSS, and JS. It's amazing how these three work together to build the web!</p>
+            <button class="btn like-btn">Like this post</button>
+        </article>
+
+        <article class="blog-post">
+            <h2>My Future Goals</h2>
+            <p>I want to build amazing tools under the Grieezboynetwork brand. Stay tuned for more updates on my coding progress.</p>
+            <button class="btn like-btn">Like this post</button>
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Grieezboynetwork</p>
+    </footer>
+
+    <script>
+        // Select all buttons with the class 'like-btn'
+        const buttons = document.querySelectorAll('.like-btn');
+
+        // Loop through buttons and add a "Click" event
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Check if already liked
+                if (this.classList.contains('liked')) {
+                    this.classList.remove('liked');
+                    this.textContent = 'Like this post';
+                } else {
+                    // Change appearance and text
+                    this.classList.add('liked');
+                    this.textContent = 'Liked! ✓';
+                    alert('Thanks for liking a Grieezboynetwork post!');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grieezboynetwork | Personal Blog</title>
+    
+    <style>
+        /* CSS Variables: Makes it easy to change colors in one place */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --card-bg: #fff;
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #f4f4f4;
+            --card-bg: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s ease;
+        }
+
+        /* Navigation Bar Styles */
+        nav {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        header {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 2rem 0;
+        }
+
+        .blog-post {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #theme-toggle {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Grieezboynetwork</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><button id="theme-toggle">🌙 Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Grieezboynetwork Blog</h1>
+        <p>Mastering the web, one line at a time.</p>
+    </header>
+
+    <div class="container">
+        <article class="blog-post">
+            <h2>Building with HTML/CSS</h2>
+            <p>I just added a navigation bar and learned about CSS variables!</p>
+            <button class="btn">Read More</button>
+        </article>
+
+        <article class="blog-post">
+            <h2>Why JavaScript is King</h2>
+            <p>JavaScript allows me to change the entire theme of my site with one click.</p>
+            <button class="btn">Read More</button>
+        </article>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            // This line "toggles" the dark-mode class on the body
+            body.classList.toggle('dark-mode');
+            
+            // Change the button text based on the mode
+            if(body.classList.contains('dark-mode')) {
+                themeToggle.textContent = "☀️ Light";
+            } else {
+                themeToggle.textContent = "🌙 Dark";
+            }
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grieezboynetwork | Mobile Responsive</title>
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --card-bg: #fff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* NAVIGATION */
+        nav {
+            background: var(--primary-color);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            width: 90%; /* Increased for better mobile fit */
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 2rem 0;
+        }
+
+        .blog-post {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        /* --- THE MAGIC: MEDIA QUERY --- */
+        /* This code only runs when the screen is 600px wide or less */
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column; /* Stacks logo and links vertically */
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 10px;
+                font-size: 0.8rem; /* Smaller font for small screens */
+            }
+
+            header h1 {
+                font-size: 1.5rem; /* Shrink title so it doesn't wrap weirdly */
+            }
+
+            .container {
+                width: 95%; /* Use more of the screen on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo">Grieezboynetwork</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header style="text-align: center; padding: 2rem;">
+        <h1>Grieezboynetwork</h1>
+        <p>This site looks great on Phones and Desktops!</p>
+    </header>
+
+    <div class="container">
+        <article class="blog-post">
+            <h2>Responsive Design 101</h2>
+            <p>Try resizing your browser window or opening this on your phone. See how the layout shifts?</p>
+        </article>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grieezboynetwork | Contact</title>
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f4f4f4;
+            --text-color: #333;
+            --card-bg: #fff;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg-color); color: var(--text-color); }
+        
+        /* Navigation & Container Styles */
+        nav { background: var(--primary-color); padding: 1rem 0; color: white; }
+        .nav-container { width: 90%; margin: auto; display: flex; justify-content: space-between; align-items: center; }
+        .container { width: 80%; max-width: 800px; margin: auto; padding: 2rem 0; }
+
+        /* FORM STYLES */
+        .contact-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Important: keeps padding inside the width */
+            font-size: 1rem;
+        }
+
+        textarea { height: 100px; resize: vertical; }
+
+        .submit-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover { background: #d35400; }
+
+        #form-status {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+            display: none; /* Hidden until message is sent */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <strong>Grieezboynetwork</strong>
+            <span>Contact Us</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="contact-section">
+            <h2>Send us a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="How can Grieezboynetwork help you?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <p id="form-status"></p>
+        </section>
+    </div>
+
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const statusMessage = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', function(event) {
+            // 1. Prevent the page from refreshing (the default behavior)
+            event.preventDefault();
+
+            // 2. Get the values from the inputs
+            const userName = document.getElementById('name').value;
+
+            // 3. Show a success message
+            statusMessage.style.display = 'block';
+            statusMessage.style.color = '#27ae60';
+            statusMessage.textContent = `Thank you, ${userName}! Grieezboynetwork has received your message.`;
+
+            // 4. Clear the form
+            contactForm.reset();
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grieezboynetwork | Portfolio</title>
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f4f4f4;
+            --card-bg: #fff;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: var(--bg-color); }
+        .container { width: 90%; max-width: 1100px; margin: auto; padding: 2rem 0; }
+        header { text-align: center; padding: 2rem; background: var(--primary-color); color: white; }
+
+        /* --- THE GRID MAGIC --- */
+        .project-grid {
+            display: grid;
+            /* Create 3 equal columns */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; /* Space between items */
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden; /* Keeps image corners rounded */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.03); /* Slight zoom effect */
+        }
+
+        .project-image {
+            width: 100%;
+            height: 150px;
+            background: #ddd; /* Placeholder color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #888;
+        }
+
+        .project-info { padding: 1rem; }
+
+        /* RESPONSIVE GRID */
+        @media (max-width: 900px) {
+            .project-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columns on tablets */
+        }
+
+        @media (max-width: 600px) {
+            .project-grid { grid-template-columns: 1fr; } /* 1 column on phones */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Grieezboynetwork Portfolio</h1>
+        <p>A collection of my recent web projects</p>
+    </header>
+
+    <div class="container">
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image">Project One</div>
+                <div class="project-info">
+                    <h3>E-commerce Site</h3>
+                    <p>Built with HTML and CSS.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">Project Two</div>
+                <div class="project-info">
+                    <h3>Weather App</h3>
+                    <p>Uses JS for live data.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">Project Three</div>
+                <div class="project-info">
+                    <h3>Chat Interface</h3>
+                    <p>Responsive design practice.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grieezboynetwork | Connect</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --white: #ffffff;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem; /* Size of the icons */
+            margin: 0 15px; /* Space between icons */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        /* Hover effects */
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px); /* Gentle float up */
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Grieezboynetwork. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
