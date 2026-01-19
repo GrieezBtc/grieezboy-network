@@ -1,3 +1,4 @@
+<h2 id="greeting">Welcome!</h2>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,7 +101,17 @@
         <p>&copy; 2024 Grieezboynetwork</p>
     </footer>
 
-    <script>
+    <script>const greeting = document.getElementById('greeting');
+const hour = new Date().getHours();
+
+if (hour < 12) {
+    greeting.textContent = "Good Morning, Welcome to Grieezboynetwork!";
+} else if (hour < 18) {
+    greeting.textContent = "Good Afternoon, Welcome to Grieezboynetwork!";
+} else {
+    greeting.textContent = "Good Evening, Welcome to Grieezboynetwork!";
+}
+        
         // Select all buttons with the class 'like-btn'
         const buttons = document.querySelectorAll('.like-btn');
 
@@ -121,7 +132,8 @@
         });
     </script>
 
-</body>
+</body><button id="backToTop" title="Go to top">↑</button>
+    
 </html>
 <!DOCTYPE html>
 <html lang="en">
@@ -539,7 +551,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"><title>Grieezboynetwork | Portfolio & Web Development Blog</title>
+
+<meta name="description" content="Official website of Grieezboynetwork. Explore my web development journey, projects, and latest blog posts.">
+
+<meta name="keywords" content="Grieezboynetwork, Web Development, HTML, CSS, JavaScript, Portfolio">
+
+<meta name="author" content="Grieezboynetwork">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grieezboynetwork | Portfolio</title>
     
@@ -704,3 +723,31 @@
 
 </body>
 </html>
+#backToTop {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stays in the same spot even when scrolling */
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+const topBtn = document.getElementById("backToTop");
+
+// Show button when user scrolls down 100px
+window.onscroll = function() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+};
+
+// When user clicks, scroll to top
+topBtn.addEventListener("click", () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+});
